@@ -1,2 +1,10 @@
 
-/* Your CSS Code here. */
+cy.get('[data-ns-test="block-inline-h1"]').should('have.length', 2);
+
+cy.get('[data-ns-test="block-inline-h1"]').parent().then(ans => {
+  let text = ans.text();
+  text = text.replace('Test1', '');
+  text = text.replace('Test2', '');
+  text = text.trim();
+  expect(text).to.eq('Answer: Block');
+});
